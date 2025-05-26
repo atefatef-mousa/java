@@ -55,15 +55,15 @@ pipeline{
                     def dockerx = new org.iti.docker()
                     dockerx.build("java", "${VERSION}")
                 }
-                sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} "
+                sh "docker login -u ${DOCKER_USER} -p ${BUILD_NUMBER} "
             }
         }
         stage("push java app image"){
             steps{
                 script{
                     def dockerx = new org.iti.docker()
-                    dockerx.login("${DOCKER_USER}", "${DOCKER_PASS}")
-                    dockerx.push("java","${DOCKER_USER}", "${DOCKER_PASS}")
+                    dockerx.login("${DOCKER_USER}", "${BUILD_NUMBER}")
+                    dockerx.push("java","${DOCKER_USER}", "${BUILD_NUMBER}")
                 }
             }
         }
