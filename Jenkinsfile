@@ -2,7 +2,7 @@
 
 pipeline{
     agent {
-        label 'agent-0'
+        label 'agent_1'
     }
 
     tools{
