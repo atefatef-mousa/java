@@ -6,7 +6,7 @@ pipeline{
     }
 
     tools{
-        jdk "java-8"
+        //jdk "java-8"
         
     }
 
