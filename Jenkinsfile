@@ -28,6 +28,24 @@ pipeline{
                 }
             }
         }
+        stage('Install Maven') {
+            steps {
+                script {
+                    // Install Maven if not already installed on the agent
+                    sh '''
+                        if ! command -v mvn &> /dev/null; then
+                            echo "Installing Maven..."
+                            wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+                            tar -xzf apache-maven-3.9.6-bin.tar.gz -C /opt/
+                            ln -s /opt/apache-maven-3.9.6 /opt/maven
+                            export PATH="/opt/maven/bin:$PATH"
+                        else
+                            echo "Maven is already installed."
+                        fi
+                    '''
+                }
+            }
+        }
         stage("Build java app"){
             steps{
                 script{
