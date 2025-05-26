@@ -35,6 +35,9 @@ pipeline{
             steps{
                 script{
                     sayHello "ITI"
+                    def jdkPath = tool name: 'java-8', type: 'jdk'
+                    env.JAVA_HOME = "${jdkPath}"
+                    env.PATH = "${jdkPath}/bin:${env.PATH}"
                 }
                 sh "mvn clean package install -Dmaven.test.skip=${TEST}"
             }
