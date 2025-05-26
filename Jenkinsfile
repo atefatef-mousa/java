@@ -55,7 +55,7 @@ pipeline{
                     def dockerx = new org.iti.docker()
                     dockerx.build("java", "${VERSION}")
                 }
-                sh "docker login -u ${DOCKER_USER} -p ${BUILD_NUMBER} "
+                sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} "
             }
         }
         stage("push java app image"){
