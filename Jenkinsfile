@@ -5,10 +5,10 @@ pipeline{
         label 'agent_1'
     }
 
-    tools{
-        //jdk "java-8"
+    // tools{
+    //     //jdk "java-8"
         
-    }
+    // }
 
     environment{
         DOCKER_USER = credentials('dockerhub-user')
