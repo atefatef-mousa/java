@@ -13,6 +13,8 @@ pipeline{
     environment{
         DOCKER_USER = credentials('dockerhub-user')
         DOCKER_PASS = credentials('dockerhub-password')
+        JAVA_HOME = tool(name: 'java-8', type: 'jdk')
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
     parameters {
