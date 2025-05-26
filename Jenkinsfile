@@ -8,9 +8,7 @@ pipeline{
     tools{
         jdk "java-8"
         maven "maven-3"
-        JAVA_HOME = "${tool 'java-8'}"
-    // Ensure Maven uses the correct Java
-        MAVEN_OPTS = "-Xmx1024m -Djava.home=${JAVA_HOME}"
+        
     }
 
     environment{
