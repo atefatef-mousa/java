@@ -14,6 +14,8 @@ pipeline{
     environment{
         DOCKER_USER = credentials('dockerhub-user')
         DOCKER_PASS = credentials('dockerhub-password')
+        JAVA_HOME = "${tool 'java-8'}" // Explicitly set JAVA_HOME
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
     }
 
     parameters {
@@ -30,6 +32,14 @@ pipeline{
                 }
             }
         }
+
+        stage("Debug Java Setup") {
+        steps {
+            sh 'echo "JAVA_HOME: $JAVA_HOME"'
+            sh 'java -version'
+        }
+        }
+        
         
         stage("Build java app"){
             steps{
