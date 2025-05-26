@@ -62,7 +62,7 @@ pipeline{
             steps{
                 script{
                     def dockerx = new org.iti.docker()
-                    dockerx.login("${DOCKER_USER}", "${BUILD_NUMBER}")
+                    dockerx.login("${DOCKER_USER}", "${DOCKER_PASS}")
                     dockerx.push("java","${DOCKER_USER}", "${BUILD_NUMBER}")
                 }
             }
